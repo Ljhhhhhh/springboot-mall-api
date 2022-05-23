@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 @RestController
 @Api(value = "v1", tags = "后台管理系统管理员模块接口")
@@ -26,10 +27,7 @@ public class NewBeeAdminManageUserAPI {
     private static final Logger logger = LoggerFactory.getLogger(NewBeeAdminManageUserAPI.class);
 
     @RequestMapping(value = "/adminUser/login", method = RequestMethod.POST)
-    public Result<String> login(@RequestBody AdminLoginParam adminLoginParam) {
-        if (adminLoginParam == null || StringUtils.isEmpty(adminLoginParam.getUserName()) || StringUtils.isEmpty(adminLoginParam.getPasswordMd5())) {
-            return ResultGenerator.genFailResult("用户名或密码不能为空");
-        }
+    public Result<String> login(@RequestBody @Valid AdminLoginParam adminLoginParam) {
         String loginResult = adminUserService.login(adminLoginParam.getUserName(), adminLoginParam.getPasswordMd5());
         logger.info("manage login api,adminName={},loginResult={}", adminLoginParam.getUserName(), loginResult);
 
