@@ -16,19 +16,10 @@ public class Swagger2Config {
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("ti.mall.api"))
-                .paths(PathSelectors.any())
-                .build();
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select().apis(RequestHandlerSelectors.basePackage("ti.mall.api")).paths(PathSelectors.any()).build();
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("swagger-api文档")
-                .description("swagger文档 by spring")
-                .version("1.0")
-                .build();
+        return new ApiInfoBuilder().title("swagger-api文档").description("swagger文档 by spring").version("1.0").build();
     }
 }

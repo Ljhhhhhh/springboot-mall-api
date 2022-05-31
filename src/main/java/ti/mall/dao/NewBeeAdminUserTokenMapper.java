@@ -1,5 +1,6 @@
 package ti.mall.dao;
 
+import org.springframework.stereotype.Repository;
 import ti.mall.entity.AdminUserToken;
 
 public interface NewBeeAdminUserTokenMapper {
